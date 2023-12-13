@@ -1,0 +1,12 @@
+.footer {
+  border-top: 2px solid #ccc;
+  display: flex;
+  justify-content: center;
+  padding: 3.2rem 0 2.4rem;
+}
+
+.footer-text {
+  font-size: 1.6rem;
+  margin: 0;
+  padding: 0;
+}

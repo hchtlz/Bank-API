@@ -1,21 +1,19 @@
-function App() {
+import React from "react";
+import "./style/index.css";
+import Header from "./components/Header/Header";
+import Hero from "./components/Hero/Hero";
+import Footer from "./components/Footer/Footer";
+import FeatureSection from './components/Feature/FeatureSection/FeatureSection';
+
+export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <main>
+        <Hero />
+        <FeatureSection />
+      </main>
+      <Footer />
     </div>
   );
 }
-
-export default App;

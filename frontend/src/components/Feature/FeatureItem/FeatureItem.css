@@ -1,0 +1,26 @@
+.feature-icon {
+  width: 15.2rem;
+  border: 1rem solid #00bc77;
+  border-radius: 50%;
+  padding: 1.6rem;
+}
+
+.feature-item {
+  flex: 1;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feature-item-title {
+  color: #222;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 2rem 0 0.8rem;
+}
+
+.feature-item-content {
+  font-size: 1.6rem;
+  margin: 1.2rem 0 1.6rem;
+}

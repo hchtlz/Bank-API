@@ -1,0 +1,54 @@
+.header {
+  align-items: center;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 2rem;
+}
+
+.header a {
+  color: #2c3e50;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.header a.router-link-exact-active {
+  color: #42b983;
+}
+
+.header-item {
+  margin-right: 0.2rem;
+  text-decoration: none;
+}
+
+.header-item i {
+  margin-right: 0.5rem;
+}
+
+.header-item:hover {
+  text-decoration: underline;
+}
+
+.header-logo {
+  align-items: center;
+  display: flex;
+}
+
+.header-logo-image {
+  max-width: 100%;
+  width: 20rem;
+}
+
+.sr-only {
+  -webkit-clip-path: inset(50%);
+  border: 0;
+  clip-path: inset(50%);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
