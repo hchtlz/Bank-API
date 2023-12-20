@@ -1,0 +1,22 @@
+.profile {
+  background-color: #12002b;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.profile_heading {
+  color: #FFFFFF;
+  font-size: clamp(3rem, 3.2vw, 3.2rem);
+  margin: 2.2rem auto;
+  text-align: center;
+}
+
+.profile_edit {
+  background-color: #00bc77;
+  border-color: #00bc77;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 1rem;
+}

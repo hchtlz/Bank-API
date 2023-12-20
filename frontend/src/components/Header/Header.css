@@ -16,16 +16,29 @@
   color: #42b983;
 }
 
-.header-item {
+.header-item,
+.header-item.button {
+  background: none;
+  border: none;
+  color: #2c3e50;
+  decoration: none;
+  font-size: 1.6rem;
+  font-weight: bold;
   margin-right: 0.2rem;
   text-decoration: none;
 }
 
-.header-item i {
+.header-item.name {
+  margin-right: 2rem;
+}
+
+.header-item i ,
+.header-item.button i{
   margin-right: 0.5rem;
 }
 
-.header-item:hover {
+.header-item:hover,
+.header-item:hover.button {
   text-decoration: underline;
 }
 

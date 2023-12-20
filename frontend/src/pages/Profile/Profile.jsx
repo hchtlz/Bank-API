@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchUserProfile } from '../../services/services';
+import './Profile.css';
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -16,7 +17,6 @@ const Profile = () => {
         .then((response) => {
           if (response.status === 200) {
             setUserProfile(response.body);
-          } else {
           }
         })
         .catch((error) => {
@@ -25,15 +25,9 @@ const Profile = () => {
   }, [navigate]);
 
   return (
-    <div>
-      <h1>Profile Page</h1>
-      {userProfile && (
-        <div>
-          <p>ID: {userProfile.id}</p>
-          <p>Email: {userProfile.email}</p>
-          {/* Ajoutez d'autres informations du profil ici */}
-        </div>
-      )}
+    <div className="profile">
+      <h1 className='profile_heading'>Welcome back<br />{userProfile && userProfile.firstName} {userProfile && userProfile.lastName}!</h1>
+      <button className='profile_edit'>Edit name</button>
     </div>
   );
 };
