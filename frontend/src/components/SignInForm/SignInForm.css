@@ -23,7 +23,7 @@
 .sign-in-content {
   background-color: white;
   box-sizing: border-box;
-  margin: 3rem auto 0 auto;
+  margin: 5rem auto 0 auto;
   padding: 2rem;
   width: 30rem;
 }
@@ -38,6 +38,7 @@
 
 .input-remember {
   display: flex;
+  margin: 1.5rem 0;
 }
 
 .input-remember label {

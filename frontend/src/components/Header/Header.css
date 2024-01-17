@@ -29,7 +29,7 @@
 }
 
 .header-item.name {
-  margin-right: 2rem;
+  margin-right: 1rem;
 }
 
 .header-item i ,
@@ -49,7 +49,7 @@
 
 .header-logo-image {
   max-width: 100%;
-  width: 20rem;
+  width: clamp(15rem, 20vw, 20rem); 
 }
 
 .sr-only {
@@ -64,4 +64,19 @@
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+@media (max-width: 768px) {
+  .header-links {
+    display: flex;
+    align-items: center;
+  }
+
+  .header-item {
+    font-size: 1.2rem;
+  }
+
+  .header a {
+    font-size: 1.2rem;
+  }
 }

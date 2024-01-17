@@ -16,7 +16,6 @@
   4. Improve text rendering
 */
 body {
-  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   margin: 0;
   display: flex;
@@ -63,4 +62,5 @@ html {
 main {
   min-height: calc(100vh - 14.638rem);
   position: relative;
+  background-color: #12002b;
 }

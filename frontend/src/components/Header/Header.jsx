@@ -31,7 +31,7 @@ export default function Header() {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    navigate('/login');
+    navigate('/');
   };
 
   return (
@@ -44,7 +44,7 @@ export default function Header() {
         />
         <h1 className="sr-only">Argent Bank</h1>
       </Link>
-      <div>
+      <div className='header-links'>
         {isAuthenticated ? (
           <>
             <Link to="/profile" className="header-item name">
@@ -53,7 +53,7 @@ export default function Header() {
             </Link>
             <button className="header-item logout" onClick={handleLogout}>
               <i className="fa fa-sign-out"></i>
-              Logout
+              Sign Out
             </button>
           </>
         ) : (
