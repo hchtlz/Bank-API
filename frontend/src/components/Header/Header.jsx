@@ -3,36 +3,24 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/images/argentBankLogo.png';
 import '../Header/Header.css';
 import { useNavigate } from 'react-router-dom';
-import { fetchUserProfile } from '../../services/services';
+import { useDispatch, useSelector } from 'react-redux';
+import { userProfile } from '../../app/actions/action';
 
 export default function Header() {
   const navigate = useNavigate();
-  const isAuthenticated = !!localStorage.getItem('token');
+  const dispatch = useDispatch();
   const token = localStorage.getItem('token');
+  const isAuthenticated = token ? true : false;
 
-  const [userFirstName, setUserFirstName] = useState('');
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await fetchUserProfile(token);
-        if (response.status === 200) {
-          setUserFirstName(response.body.firstName);
-        }
-      } catch (error) {
-        console.error('Erreur lors de la récupération du profil', error);
-      }
-    };
-
-    if (isAuthenticated && token) {
-      fetchUser();
-    }
-  }, [isAuthenticated, token]);
+  const { firstName } = useSelector((state) => state.userReducer);
+  console.log(firstName);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/');
   };
+
+  // PROBLEME JE N'ARRIVE PAS A RECUPERER LE FIRSTNAME DANS LE REDUCER
 
   return (
     <header className="header">
@@ -49,7 +37,7 @@ export default function Header() {
           <>
             <Link to="/profile" className="header-item name">
               <i className="fa fa-user-circle"></i>
-              {userFirstName}
+              {firstName}
             </Link>
             <button className="header-item logout" onClick={handleLogout}>
               <i className="fa fa-sign-out"></i>

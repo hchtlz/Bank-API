@@ -2,12 +2,14 @@ import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Alert } from 'antd';
 import './SignInForm.css';
-import { fetchToken } from '../../services/services';
+import { useDispatch } from 'react-redux';
+import { login } from '../../../src/app/actions/action';
 
 const SignInForm = () => {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [error, setError] = useState(null);
 
@@ -15,16 +17,9 @@ const SignInForm = () => {
     e.preventDefault();
 
     try {
-      const response = await fetchToken(emailRef.current.value, passwordRef.current.value);
-      if (response.status === 200) {
-        const token = response.body.token;
-        localStorage.setItem('token', token);
-        localStorage.setItem('email', emailRef.current.value); // Store email
+      await dispatch(login(emailRef.current.value, passwordRef.current.value));
 
-        navigate('/profile');
-      } else {
-        setError(response.message || 'Login failed. Please check your credentials.');
-      }
+      navigate('/profile');
     } catch (error) {
       setError('An unexpected error occurred. Please try again.');
     }
