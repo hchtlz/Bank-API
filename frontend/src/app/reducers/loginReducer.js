@@ -1,6 +1,5 @@
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_FAIL = 'LOGIN_FAIL'
-export const LOGOUT = 'LOGOUT'
 
 const INITIAL_STATE = {
   isLogged: false,
@@ -13,8 +12,6 @@ export const loginReducer = (state = INITIAL_STATE, action) => {
       return { isLogged: true, token: action.payload.body.token }
     case LOGIN_FAIL:
       return { isLogged: false, token: null, error: action.payload }
-    case LOGOUT:
-      return { isLogged: false, token: null }
     default:
       return state
   }

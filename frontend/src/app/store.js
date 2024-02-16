@@ -1,10 +1,15 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { loginReducer } from './reducers/loginReducer.js'
-import { userReducer } from './reducers/userReducer.js'
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { loginReducer } from './reducers/loginReducer.js';
+import { userReducer } from './reducers/userReducer.js';
 
-export default configureStore({
-  reducer: {
-    login: loginReducer,
-    user: userReducer,
-  },
+const rootReducer = combineReducers({
+  login: loginReducer,
+  user: userReducer,
 })
+
+const store = configureStore({
+  reducer: rootReducer,
+  devTools: true 
+})
+
+export default store;

@@ -33,11 +33,11 @@ const SignInForm = () => {
         {error && <Alert message={"Authentification Error"} type="error" showIcon />}
         <div className="input-wrapper">
           <label htmlFor="username">Username</label>
-          <input type="email" id="username" ref={emailRef} />
+          <input type="email" id="username" ref={emailRef} defaultValue="steve@rogers.com" />
         </div>
         <div className="input-wrapper">
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" ref={passwordRef} />
+          <input type="password" id="password" ref={passwordRef} defaultValue="password456" />
         </div>
         <div className="input-remember">
           <input type="checkbox" id="remember-me" />

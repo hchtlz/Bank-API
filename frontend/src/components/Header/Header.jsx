@@ -9,18 +9,14 @@ import { userProfile } from '../../app/actions/action';
 export default function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const token = localStorage.getItem('token');
-  const isAuthenticated = token ? true : false;
-
-  const { firstName } = useSelector((state) => state.userReducer);
-  console.log(firstName);
+  dispatch(userProfile());
+  const firstname = useSelector((state) => state?.user?.userData?.body?.firstName);
+  const isAuthenticated = !!localStorage.getItem('token');
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    navigate('/');
+    navigate('/login');
   };
-
-  // PROBLEME JE N'ARRIVE PAS A RECUPERER LE FIRSTNAME DANS LE REDUCER
 
   return (
     <header className="header">
@@ -33,11 +29,11 @@ export default function Header() {
         <h1 className="sr-only">Argent Bank</h1>
       </Link>
       <div className='header-links'>
-        {isAuthenticated ? (
+        {isAuthenticated  ? (
           <>
             <Link to="/profile" className="header-item name">
               <i className="fa fa-user-circle"></i>
-              {firstName}
+              {firstname}
             </Link>
             <button className="header-item logout" onClick={handleLogout}>
               <i className="fa fa-sign-out"></i>

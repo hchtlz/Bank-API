@@ -1,5 +1,5 @@
 import { LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from '../reducers/loginReducer.js'
-import { USER_PROFILE_SUCCESS, USER_PROFILE_FAIL, USER_PROFILE_RESET, USER_PROFILE_UPDATE } from '../reducers/userReducer.js'
+import { GET_USERPROFILE, EDIT_USERNAME } from '../reducers/userReducer.js'
 import axios from 'axios'
 
 export const login = (email, password) => async (dispatch) => {
@@ -12,12 +12,30 @@ export const login = (email, password) => async (dispatch) => {
   }
 }
 
-export const userProfile = (token) => async (dispatch) => {
+/* Get user profile action */
+export const userProfile = () => async (dispatch) => {
   try {
-    const { data } = await axios.get('http://localhost:3001/api/v1/user/profile', { headers: { Authorization: `Bearer ${token}` } })
-    dispatch({ type: USER_PROFILE_SUCCESS, payload: data })
+    const token = localStorage.getItem('token');
+    const { data } = await axios.post(
+      'http://localhost:3001/api/v1/user/profile',
+      {},
+      {
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
+    dispatch({ type: GET_USERPROFILE, payload: data });
+  } catch (error) {
+    console.error('Erreur lors de la récupération du profil', error);
   }
-  catch (error) {
-    dispatch({ type: USER_PROFILE_FAIL, payload: error })
+};
+
+/* Username update action */
+export const updateUsername = (username) => {
+  return {
+      type: EDIT_USERNAME,
+      payload: username,
   }
 }
