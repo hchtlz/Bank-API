@@ -1,12 +1,12 @@
-import { LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from '../reducers/loginReducer.js'
+import { LOGIN_SUCCESS, LOGIN_FAIL } from '../reducers/loginReducer.js'
 import { GET_USERPROFILE, EDIT_USERNAME } from '../reducers/userReducer.js'
 import axios from 'axios'
 
+/* Login action */
 export const login = (email, password) => async (dispatch) => {
   try {
     const { data } = await axios.post('http://localhost:3001/api/v1/user/login', { email, password })
     dispatch({ type: LOGIN_SUCCESS, payload: data })
-    console.log({data})
     localStorage.setItem('token', data.body.token)
   } catch (error) {
     dispatch({ type: LOGIN_FAIL, payload: error })
@@ -17,7 +17,6 @@ export const login = (email, password) => async (dispatch) => {
 export const userProfile = () => async (dispatch) => {
   try {
     const token = localStorage.getItem('token');
-    console.log(token);
     const { data } = await axios.post(
       'http://localhost:3001/api/v1/user/profile',
       {},

@@ -39,7 +39,7 @@ export default function Profile() {
         )}
         {!isEditing && (
           <>
-            <span>{firstname} {lastname}!</span>
+            <span className='profile_name'>{firstname} {lastname} !</span>
             <button className='profile_edit' onClick={handleEditClick}>Edit name</button>
           </>
         )}

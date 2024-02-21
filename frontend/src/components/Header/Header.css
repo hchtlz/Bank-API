@@ -30,6 +30,7 @@
 
 .header-item.name {
   margin-right: 1rem;
+  text-transform: capitalize;
 }
 
 .header-item i ,

@@ -28,6 +28,10 @@
   width: fit-content;
 }
 
+.profile_name {
+  text-transform: capitalize;
+}
+
 .profile_accounts {
   margin-top: 3.2rem;
 }

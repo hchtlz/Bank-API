@@ -2,12 +2,12 @@
 export const GET_USERPROFILE = "GET_USERPROFILE"
 export const EDIT_USERNAME = "EDIT_USERNAME"
 
-const initialState = {
+const INITIAL_STATE = {
   status: 'VOID',
   userData: {}
 };
 
-export const userReducer = (state = initialState, action ) => {
+export const userReducer = (state = INITIAL_STATE, action ) => {
   switch (action.type) {
       case GET_USERPROFILE:
           return {
