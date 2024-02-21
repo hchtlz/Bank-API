@@ -5,10 +5,16 @@
 }
 
 .profile_heading {
-  color: #FFFFFF;
-  font-size: clamp(2.8rem, 3.2vw, 3.2rem);
   margin: 2.2rem auto;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile_heading span {
+  color: #FFFFFF;
+  font-size: clamp(2.8rem, 3.2vw, 3.2rem);
+  font-weight: bold;
 }
 
 .profile_edit {
@@ -17,7 +23,9 @@
   color: #fff;
   font-size: 1.4rem;
   font-weight: bold;
+  margin: 1.6rem auto;
   padding: 1rem;
+  width: fit-content;
 }
 
 .profile_accounts {

@@ -1,0 +1,44 @@
+.edit-name-content {
+  margin: 0 auto;
+  margin-top: 2rem;
+  max-width: 40rem;
+}
+
+.edit-input-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.edit-input-wrapper input {
+  font-size: 1.2rem;
+  padding: 0.8rem;
+  width: 17rem;
+}
+
+.action-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.edit-name-button {
+  background-color: #fff;
+  border-color: #fff;
+  color: #00bc77;
+  cursor: pointer;
+  display: block;
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 0.6rem;
+  width: 10rem;
+}
+
+.edit-name-content form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}

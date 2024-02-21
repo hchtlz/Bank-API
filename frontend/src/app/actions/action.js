@@ -6,6 +6,7 @@ export const login = (email, password) => async (dispatch) => {
   try {
     const { data } = await axios.post('http://localhost:3001/api/v1/user/login', { email, password })
     dispatch({ type: LOGIN_SUCCESS, payload: data })
+    console.log({data})
     localStorage.setItem('token', data.body.token)
   } catch (error) {
     dispatch({ type: LOGIN_FAIL, payload: error })
@@ -16,6 +17,7 @@ export const login = (email, password) => async (dispatch) => {
 export const userProfile = () => async (dispatch) => {
   try {
     const token = localStorage.getItem('token');
+    console.log(token);
     const { data } = await axios.post(
       'http://localhost:3001/api/v1/user/profile',
       {},
@@ -33,9 +35,24 @@ export const userProfile = () => async (dispatch) => {
 };
 
 /* Username update action */
-export const updateUsername = (username) => {
-  return {
-      type: EDIT_USERNAME,
-      payload: username,
+export const userEdit = (firstname, lastname) => async (dispatch) => {
+  try {
+    const token = localStorage.getItem('token');
+    const { data } = await axios.put(
+      'http://localhost:3001/api/v1/user/profile',
+      {
+        firstName: firstname,
+        lastName: lastname,
+      },
+      {
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
+    dispatch({ type: EDIT_USERNAME, payload: data });
+  } catch (error) {
+    console.error('Erreur lors de la récupération du profil', error);
   }
-}
+};
