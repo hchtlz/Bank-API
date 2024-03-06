@@ -1,6 +1,7 @@
 import { LOGIN_SUCCESS, LOGIN_FAIL } from '../reducers/loginReducer.js'
 import { GET_USERPROFILE, EDIT_USERNAME } from '../reducers/userReducer.js'
 import axios from 'axios'
+import { Alert } from 'antd';
 
 /* Login action */
 export const login = (email, password) => async (dispatch) => {
@@ -8,8 +9,13 @@ export const login = (email, password) => async (dispatch) => {
     const { data } = await axios.post('http://localhost:3001/api/v1/user/login', { email, password })
     dispatch({ type: LOGIN_SUCCESS, payload: data })
     localStorage.setItem('token', data.body.token)
+
   } catch (error) {
     dispatch({ type: LOGIN_FAIL, payload: error })
+
+    Alert.error({
+      type: 'error',
+    });
   }
 }
 

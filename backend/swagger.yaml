@@ -111,7 +111,7 @@ paths:
         '500':
           description: Internal Server Error
   /user/account:
-    post: 
+    get: 
       tags:
         - Accounts and Transactions Module
       summary: All accounts
@@ -143,6 +143,10 @@ paths:
       security: 
         - Bearer: []
       parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
         - in: path
           name: accountID
           description: ID of an account
@@ -170,6 +174,10 @@ paths:
       security: 
         - Bearer: []
       parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
         - in: path
           name: transactionID
           description: ID of a transaction
@@ -201,6 +209,10 @@ paths:
       security: 
         - Bearer: []
       parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
         - in: path
           name: transactionID
           description: ID of a transaction
@@ -232,6 +244,10 @@ paths:
       security: 
         - Bearer: []
       parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
         - in: path
           name: transactionID
           description: ID of a transaction
@@ -267,6 +283,10 @@ paths:
       security:
         - Bearer: []
       parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
         - in: path
           name: transactionID
           description: ID of a transaction
