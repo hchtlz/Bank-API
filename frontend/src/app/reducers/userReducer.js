@@ -9,22 +9,22 @@ const INITIAL_STATE = {
 
 export const userReducer = (state = INITIAL_STATE, action ) => {
   switch (action.type) {
-      case GET_USERPROFILE:
-          return {
-              ...state,
-              status: 'SUCCEEDED',
-              userData: action.payload
-          }
-      case EDIT_USERNAME: 
-          return {
-              ...state,
-              status: "MODIFIED",
-              userData: {
-                  ...state.userData,
-                  username: action.payload
-              } 
-          } 
-      default:
-          return state;    
+    case GET_USERPROFILE:
+        return {
+            ...state,
+            status: 'SUCCEEDED',
+            userData: action.payload
+        }
+    case EDIT_USERNAME: 
+        return {
+            ...state,
+            status: "MODIFIED",
+            userData: {
+                ...state.userData,
+                username: action.payload
+            } 
+        } 
+    default:
+        return state;    
   }
 }
