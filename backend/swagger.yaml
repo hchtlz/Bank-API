@@ -70,6 +70,7 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
+          type: string
       produces:
         - application/json
       responses:
@@ -92,6 +93,7 @@ paths:
         - in: header
           name: Authorization
           description: Attach Bearer JWT token
+          type: string
           required: true
         - in: body
           name: body
@@ -123,6 +125,7 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
+          type: string
       responses: 
         '200':
           description: All accounts retrieved successfully
@@ -139,7 +142,7 @@ paths:
       tags:
         - Accounts and Transactions Module
       summary: Account transactions
-      description: API for retrieving list of transactions assiocated with an account
+      description: API for retrieving list of transactions associated with an account
       security: 
         - Bearer: []
       parameters:
@@ -147,8 +150,9 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
+          type: string
         - in: path
-          name: accountID
+          name: accountID  # Correction: le paramètre devrait être accountID
           description: ID of an account
           required: true
           type: string
@@ -165,7 +169,42 @@ paths:
           description: Account not found
         '500':
           description: Internal Server Error
-  /transactions/{transactionID}/category:
+  /account/{accountID}/{transactionID}:
+    get:
+      tags:
+        - Accounts and Transactions Module
+      summary: Account transaction
+      description: API for retrieving a transaction
+      security: 
+        - Bearer: []
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type: string
+        - in: path
+          name: accountID
+          description: ID of an account
+          required: true
+          type: string
+        - in: path
+          name: transactionID
+          description: ID of a transaction
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Transaction retrieved successfully
+          schema: 
+            $ref: '#/definitions/TransactionResponse'
+        '401':
+          description: Unauthorized user
+        '404': 
+          description: Account not found
+        '500':
+          description: Internal Server Error
+  /transactions/{transactionID}:
     put:
       tags:
         - Accounts and Transactions Module
@@ -178,6 +217,7 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
+          type: string
         - in: path
           name: transactionID
           description: ID of a transaction
@@ -193,7 +233,7 @@ paths:
         '200':
           description: Transaction's category modified successfully
           schema: 
-            $ref: '#/definitions/TransactionCategory'
+            $ref: '#/definitions/TransactionResponse'
         '401': 
           description: Unauthorized user
         '404': 
@@ -213,6 +253,7 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
+          type: string
         - in: path
           name: transactionID
           description: ID of a transaction
@@ -248,6 +289,7 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
+          type: string
         - in: path
           name: transactionID
           description: ID of a transaction
@@ -268,7 +310,7 @@ paths:
         '200':
           description: Note modified successfully
           schema:
-            $ref: '#/definitions/TransactionResponseNote'
+            $ref: '#/definitions/TransactionResponse'
         '401':
           description: Unauthorized user
         '404':
@@ -287,6 +329,7 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
+          type: string
         - in: path
           name: transactionID
           description: ID of a transaction
@@ -406,6 +449,31 @@ definitions:
       note: 
         type: string
         description: user note
+  TransactionResponse:
+    type: object
+    properties:
+      transactionID: 
+        type: string
+        description: transaction ID
+      transactionType:
+        type: string
+        description: type of transaction
+      date:
+        type: string
+        format: date-time
+        description: date of transaction
+      description:
+        type: string
+        description: description of transaction
+      amount:
+        type: number
+        description: transaction amount
+      balance:
+        type: number
+        description: available balance
+        format: double
+      category:
+        type: string
   TransactionCategory:
     type: object
     properties:
@@ -422,5 +490,4 @@ definitions:
       note:
         type: string
       noteID:
-        type: string      
-  
+        type: string
