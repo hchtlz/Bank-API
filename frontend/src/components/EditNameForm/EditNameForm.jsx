@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from 'react-redux';
 import { userEdit } from "../../app/actions/action";
 import "./EditNameForm.css";
@@ -8,7 +8,7 @@ export default function EditNameForm({ firstname, lastname, onCancel }) {
   const handleSaveClick = () => {
     dispatch(userEdit(document.getElementById('firstname').value, document.getElementById('lastname').value));
   };
-
+  
   return (
     <section className="edit-name-content">
       <form>
